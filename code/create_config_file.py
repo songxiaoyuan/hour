@@ -127,7 +127,9 @@ class BandAndTrigger(object):
 		self._limit_ema_tick_1 = param_dic["limit_ema_tick_1"]
 
 		self._ema_period = 20
-		self._current_hour = 9
+		self._minute_num = 0
+		self._limit_minute_num = 60
+		self._current_minute = -1
 
 		self._multiple = param_dic["multiple"]
 
@@ -156,10 +158,7 @@ class BandAndTrigger(object):
 		print len(self._lastprice_array)
 		# print "the length of lastprice is: " +str(len(self._lastprice_array))
 
-
-	def __del__(self):
-		print "this is the over function " + str(self._config_file)
-
+	def create_config_file(self):
 		config_file = "../hour_config/config/"+str(self._config_file+2)
 		bf.write_config_info(self._pre_ema_val_60,self._pre_ema_val_5,self._pre_ema_val_1,
 			self._lastprice_array,self._ema_period,config_file)
@@ -179,7 +178,7 @@ class BandAndTrigger(object):
 
 
 	# get the md data ,every line;
-	def get_md_data(self,md_array):
+	def get_md_data(self,md_array,lastone):
 		# tranfer the string to float
 		# md_array[LASTPRICE] = float(md_array[LASTPRICE])
 		# md_array[VOLUME] = float(md_array[VOLUME])
@@ -187,8 +186,6 @@ class BandAndTrigger(object):
 		# md_array[TURNONER] = float(md_array[TURNONER])
 		# md_array[BIDPRICE1] = float(md_array[BIDPRICE1])
 		# md_array[ASKPRICE1] = float(md_array[ASKPRICE1])
-
-
 
 		self._pre_md_price = self._now_md_price
 		self._now_md_price = md_array
@@ -211,13 +208,18 @@ class BandAndTrigger(object):
 		self._sd_val = bf.get_sd_data(lastprice,self._lastprice_array,self._ema_period)
 		self._rsi_val = bf.get_rsi_data(lastprice,self._lastprice_array,self._rsi_period)
 
-		# print len(self._lastprice_array)
-		hour = int(self._now_md_price[TIME].split(':')[0])
-		if hour != self._current_hour and hour !=13 and hour != 21:
-			# print "the hour is not  equal "
-			self._current_hour = hour
+		if lastone == True:
 			self._pre_ema_val_60 = self._now_middle_60
 			self._lastprice_array.append(lastprice)
+			return True
+		minute = int(self._now_md_price[TIME].split(':')[1])
+		if minute != self._current_minute:
+			self._current_minute = minute
+			self._minute_num +=1
+			if self._minute_num >= self._limit_minute_num:
+				self._minute_num =0
+				self._pre_ema_val_60 = self._now_middle_60
+				self._lastprice_array.append(lastprice)
 		if self._now_ema_tick_1 >= self._limit_ema_tick_1:
 			self._now_ema_tick_1 = 0
 			self._pre_ema_val_1 = self._now_middle_1
@@ -368,9 +370,14 @@ def start_create_config(instrumentid,data):
 		print "the instrument id " + instrumentid + " is not in the dict"
 	param =  nameDict[instrumentid]["param"]
 	bt = BandAndTrigger(param)
-	for row in data:
-		bt.get_md_data(row)
-		# tranfer the string to float
+	if len(data) <=0:
+		return
+	for row in data[0:-1]:
+		bt.get_md_data(row,0)
+		# tranfer the string to float\
+	row = data[-1]
+	bt.get_md_data(row,1)
+	bt.create_config_file()
 
 	if int(hour)>=15:
 		data = bt.get_to_csv_data()
