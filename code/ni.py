@@ -16,50 +16,64 @@ SHORT =0
 
 def main():
 	# ni
-	shutil.copy('../hour_config/config/352', '../hour_config/real_server/540')
-	shutil.copy('../hour_config/config/352', '../hour_config/real_server/541')
-	shutil.copy('../hour_config/config/352', '../hour_config/config/353')
-	shutil.copy('../hour_config/config/352', '../hour_config/config/354')
-	shutil.copy('../hour_config/config/352', '../hour_config/config/355')
+	shutil.copy('../hour_config/config/350', '../hour_config/real_server/540')
+	shutil.copy('../hour_config/config/350', '../hour_config/real_server/541')
+	shutil.copy('../hour_config/config/350', '../hour_config/config/351')
+
 	# pp
-	shutil.copy('../hour_config/config/382', '../hour_config/real_server/544')
-	shutil.copy('../hour_config/config/382', '../hour_config/real_server/545')
-	shutil.copy('../hour_config/config/382', '../hour_config/config/383')
-	shutil.copy('../hour_config/config/382', '../hour_config/config/384')
-	shutil.copy('../hour_config/config/382', '../hour_config/config/385')
-	# m
-	shutil.copy('../hour_config/config/512', '../hour_config/real_server/564')
-	shutil.copy('../hour_config/config/512', '../hour_config/real_server/565')
-	shutil.copy('../hour_config/config/512', '../hour_config/config/513')
-	shutil.copy('../hour_config/config/512', '../hour_config/config/514')
-	shutil.copy('../hour_config/config/512', '../hour_config/config/515')
-	# p
-	shutil.copy('../hour_config/config/482', '../hour_config/real_server/558')
-	shutil.copy('../hour_config/config/482', '../hour_config/real_server/559')
-	shutil.copy('../hour_config/config/482', '../hour_config/config/483')
-	shutil.copy('../hour_config/config/482', '../hour_config/config/484')
-	shutil.copy('../hour_config/config/482', '../hour_config/config/485')
+	shutil.copy('../hour_config/config/380', '../hour_config/real_server/544')
+	shutil.copy('../hour_config/config/380', '../hour_config/real_server/545')
+	shutil.copy('../hour_config/config/380', '../hour_config/config/381')
+
+	# v
+	shutil.copy('../hour_config/config/390', '../hour_config/real_server/546')
+	shutil.copy('../hour_config/config/390', '../hour_config/real_server/547')
+	shutil.copy('../hour_config/config/390', '../hour_config/config/391')
 
 	# bu
-	shutil.copy('../hour_config/config/422', '../hour_config/real_server/542')
-	shutil.copy('../hour_config/config/422', '../hour_config/real_server/543')
-	shutil.copy('../hour_config/config/422', '../hour_config/config/423')
-	shutil.copy('../hour_config/config/422', '../hour_config/config/424')
-	shutil.copy('../hour_config/config/422', '../hour_config/config/425')
+	shutil.copy('../hour_config/config/420', '../hour_config/real_server/542')
+	shutil.copy('../hour_config/config/420', '../hour_config/real_server/543')
+	shutil.copy('../hour_config/config/420', '../hour_config/config/421')
 
-	# jm
-	shutil.copy('../hour_config/config/462', '../hour_config/real_server/554')
-	shutil.copy('../hour_config/config/462', '../hour_config/real_server/555')
-	shutil.copy('../hour_config/config/462', '../hour_config/config/463')
-	shutil.copy('../hour_config/config/462', '../hour_config/config/464')
-	shutil.copy('../hour_config/config/462', '../hour_config/config/465')
+	# al
+	shutil.copy('../hour_config/config/360', '../hour_config/real_server/538')
+	shutil.copy('../hour_config/config/360', '../hour_config/real_server/539')
+	shutil.copy('../hour_config/config/360', '../hour_config/config/361')
 
-	# j
-	shutil.copy('../hour_config/config/452', '../hour_config/real_server/552')
-	shutil.copy('../hour_config/config/452', '../hour_config/real_server/553')
-	shutil.copy('../hour_config/config/452', '../hour_config/config/453')
-	shutil.copy('../hour_config/config/452', '../hour_config/config/454')
-	shutil.copy('../hour_config/config/452', '../hour_config/config/455')
+	# cu
+	shutil.copy('../hour_config/config/370', '../hour_config/real_server/536')
+	shutil.copy('../hour_config/config/370', '../hour_config/real_server/537')
+	shutil.copy('../hour_config/config/370', '../hour_config/config/371')
+
+	# zn
+	shutil.copy('../hour_config/config/340', '../hour_config/real_server/528')
+	shutil.copy('../hour_config/config/340', '../hour_config/real_server/529')
+	shutil.copy('../hour_config/config/340', '../hour_config/config/341')
+
+	# pb
+	shutil.copy('../hour_config/config/310', '../hour_config/real_server/532')
+	shutil.copy('../hour_config/config/310', '../hour_config/real_server/533')
+	shutil.copy('../hour_config/config/310', '../hour_config/config/311')
+
+	# hc
+	shutil.copy('../hour_config/config/440', '../hour_config/real_server/548')
+	shutil.copy('../hour_config/config/440', '../hour_config/real_server/549')
+	shutil.copy('../hour_config/config/440', '../hour_config/config/441')
+
+	# rb
+	shutil.copy('../hour_config/config/320', '../hour_config/real_server/530')
+	shutil.copy('../hour_config/config/320', '../hour_config/real_server/531')
+	shutil.copy('../hour_config/config/320', '../hour_config/config/321')
+
+	# au
+	shutil.copy('../hour_config/config/400', '../hour_config/real_server/550')
+	shutil.copy('../hour_config/config/400', '../hour_config/real_server/551')
+	shutil.copy('../hour_config/config/400', '../hour_config/config/401')
+
+	# ag
+	shutil.copy('../hour_config/config/410', '../hour_config/real_server/552')
+	shutil.copy('../hour_config/config/410', '../hour_config/real_server/553')
+	shutil.copy('../hour_config/config/410', '../hour_config/config/411')
 
 if __name__=='__main__': 
 	main()
