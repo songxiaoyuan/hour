@@ -63,6 +63,7 @@ param_dict_j = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":100,"file":file,"config_file":450}
 param_dict_jm = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":60,"file":file,"config_file":460}
+
 param_dict_y = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":470}
 param_dict_p = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
@@ -379,8 +380,9 @@ def copy_file_to_save():
 
 def main():
 	# instrumentid_array = ["pb1801","bu1712"]
-	instrumentid_array1 = ["rb1805","ru1801","zn1802","cu1802","al1802","ni1805","pp1805","v1805","au1806","ag1806","pb1801","bu1806"]
-	instrumentid_array2 = ["j1801","jm1801","m1805","cs1801","c1801","a1801","i1805","hc1805","y1801","p1805"]
+	instrumentid_array1 = ["rb1805","hc1805","zn1802","cu1802","al1802","ni1805","pp1805","v1805","au1806","ag1806","pb1801","bu1806"]
+	instrumentid_array2 = ["j1801","jm1801","ru1801","i1805"]
+	instrumentid_array3 =  ["m1805","cs1801","c1801","a1801","y1801","p1805"]
 	instrumentid_array = instrumentid_array1 + instrumentid_array2
 
 	conn = cx_Oracle.connect('hq','hq','114.251.16.210:9921/quota')    

@@ -22,84 +22,81 @@ date = time.strftime('%Y%m%d',time.localtime(time.time()))
 hour = time.strftime('%H',time.localtime(time.time()))
 
 # 这个是铅的
-param_dict_pb = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_pb = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":5,"file":file,"config_file":310}
 # 这个是螺纹钢的
-param_dict_rb = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_rb = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":320}
 
 # 这个是橡胶的
-param_dic_ru = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dic_ru = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":330}
 
 # 这个是锌的
-param_dic_zn = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dic_zn = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":5,"file":file,"config_file":340}
 
-param_dic_ni = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dic_ni = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":1,"file":file,"config_file":350}
 
-param_dic_al = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dic_al = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":5,"file":file,"config_file":360}
 
-param_dict_cu = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_cu = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":5,"file":file,"config_file":370}
-
-param_dict_pp = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_pp = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":5,"file":file,"config_file":380}
-param_dict_v = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_v = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":5,"file":file,"config_file":390}
-param_dict_au = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_au = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":1000,"file":file,"config_file":400}
-param_dict_ag = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_ag = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":15,"file":file,"config_file":410}
-param_dict_bu = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_bu = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":420}
 
-param_dict_i = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_i = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":100,"file":file,"config_file":430}
-param_dict_hc = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_hc = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":440}
-param_dict_j = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_j = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":100,"file":file,"config_file":450}
-param_dict_jm = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_jm = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":60,"file":file,"config_file":460}
-param_dict_y = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_y = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":470}
-param_dict_p = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_p = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":480}
-param_dict_c = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_c = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":490}
-param_dict_a = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_a = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":500}
-param_dict_m = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
+param_dict_m = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 			"multiple":10,"file":file,"config_file":510}
-param_dict_cs = {"rsi_period":14,"limit_ema_tick_5":600,"limit_ema_tick_1":120,
-			"multiple":10,"file":file,"config_file":522}
+param_dict_cs = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
+			"multiple":10,"file":file,"config_file":520}
 
 nameDict = {
 	"rb1805":{"param":param_dict_rb},
 	"ru1801":{"param":param_dic_ru},
-	"zn1801":{"param":param_dic_zn},
-	"cu1801":{"param":param_dict_cu},
-	# "i1801":{"param":param_dict_i},
-	# "hc1801":{"param":param_dict_hc},
+	"zn1802":{"param":param_dic_zn},
+	"cu1802":{"param":param_dict_cu},
 	"ni1805":{"param":param_dic_ni},
-	"al1801":{"param":param_dic_al},
-	"pp1801":{"param":param_dict_pp},
-	"v1801":{"param":param_dict_v},
+	"al1802":{"param":param_dic_al},
+	"pp1805":{"param":param_dict_pp},
+	"v1805":{"param":param_dict_v},
 	"au1806":{"param":param_dict_au},
-	"ag1712":{"param":param_dict_ag},
-	"bu1712":{"param":param_dict_bu},
+	"ag1806":{"param":param_dict_ag},
+	"bu1806":{"param":param_dict_bu},
 	"i1805":{"param":param_dict_i},
 	"hc1805":{"param":param_dict_hc},
 	"j1801":{"param":param_dict_j},
 	"jm1801":{"param":param_dict_jm},
 	"y1801":{"param":param_dict_y},
-	"p1801":{"param":param_dict_p},
+	"p1805":{"param":param_dict_p},
 	"c1801":{"param":param_dict_c},
 	"a1801":{"param":param_dict_a},
-	"m1801":{"param":param_dict_m},
+	"m1805":{"param":param_dict_m},
 	"cs1801":{"param":param_dict_cs},
 	"pb1801":{"param":param_dict_pb}
 }
@@ -129,7 +126,7 @@ class BandAndTrigger(object):
 		self._now_ema_tick_1 = 0
 		self._limit_ema_tick_1 = param_dic["limit_ema_tick_1"]
 
-		self._ema_period = 20
+		self._ma_period = 20
 		self._current_hour = 9
 
 		self._multiple = param_dic["multiple"]
@@ -141,7 +138,7 @@ class BandAndTrigger(object):
 		self._config_file = param_dic["config_file"]
 
 		self._minute_num = 0
-		self._limit_minute_num = 60
+		self._limit_minute_num = 61
 		self._current_minute = -1
 
 		if len(self._lastprice_array) ==0:
@@ -149,7 +146,7 @@ class BandAndTrigger(object):
 			tmp_pre_ema_array_60 = []
 			tmp_pre_ema_array_5 = []
 			tmp_pre_ema_array_1 = []
-			config_file = "../hour_config/config/"+str(self._config_file+2)
+			config_file = "../hour_config/config/"+str(self._config_file)
 			bf.get_config_info(tmp_pre_ema_array_60,tmp_pre_ema_array_5,tmp_pre_ema_array_1,self._lastprice_array,config_file)
 			if len(tmp_pre_ema_array_60)==0:
 				self._pre_ema_val_60 = 0
@@ -164,22 +161,13 @@ class BandAndTrigger(object):
 		# print "the length of lastprice is: " +str(len(self._lastprice_array))
 
 	def create_config_file(self):
-		config_file = "../hour_config/config/"+str(self._config_file+2)
-		bf.write_config_info(self._pre_ema_val_60,self._pre_ema_val_5,self._pre_ema_val_1,
-			self._lastprice_array,self._ema_period,config_file)
+		config_file = "../hour_config/config/"+str(self._config_file)
+		bf.write_config_info(self._now_middle_60,self._now_middle_5,self._pre_ema_val_1,
+			self._lastprice_array,self._ma_period,config_file)
 
-		config_file = "../hour_config/config/"+str(self._config_file+3)
-		bf.write_config_info(self._pre_ema_val_60,self._pre_ema_val_5,self._pre_ema_val_1,
-			self._lastprice_array,self._ema_period,config_file)
-
-		config_file = "../hour_config/config/"+str(self._config_file+4)
-		bf.write_config_info(self._pre_ema_val_60,self._pre_ema_val_5,self._pre_ema_val_1,
-			self._lastprice_array,self._ema_period,config_file)
-
-		config_file = "../hour_config/config/"+str(self._config_file+5)
-		bf.write_config_info(self._pre_ema_val_60,self._pre_ema_val_5,self._pre_ema_val_1,
-			self._lastprice_array,self._ema_period,config_file)
-		print "has write the config file"
+		config_file = "../hour_config/config/"+str(self._config_file+1)
+		bf.write_config_info(self._now_middle_60,self._now_middle_5,self._pre_ema_val_1,
+			self._lastprice_array,self._ma_period,config_file)
 
 	# get the md data ,every line;
 	def get_md_data(self,md_array,lastone):
@@ -207,11 +195,11 @@ class BandAndTrigger(object):
 			self._pre_ema_val_60 = lastprice
 			self._pre_ema_val_5 = lastprice
 			self._pre_ema_val_1 = lastprice
-		self._now_middle_60 = bf.get_ema_data(lastprice,self._pre_ema_val_60,self._ema_period)
-		self._now_middle_5 = bf.get_ema_data(lastprice,self._pre_ema_val_5,self._ema_period)
-		self._now_middle_1 = bf.get_ema_data(lastprice,self._pre_ema_val_1,self._ema_period)
+		self._now_middle_60 = bf.get_ma_data(lastprice,self._lastprice_array,self._ma_period)
+		self._now_middle_5 = bf.get_ema_data(lastprice,self._pre_ema_val_5,self._ma_period)
+		self._now_middle_1 = bf.get_ema_data(lastprice,self._pre_ema_val_1,self._ma_period)
 		
-		self._sd_val = bf.get_sd_data(lastprice,self._lastprice_array,self._ema_period)
+		self._sd_val = bf.get_sd_data(lastprice,self._lastprice_array,self._ma_period)
 		self._rsi_val = bf.get_rsi_data(lastprice,self._lastprice_array,self._rsi_period)
 
 		# print len(self._lastprice_array)
@@ -311,6 +299,8 @@ def start_create_config(instrumentid,data):
 		print "the instrument id " + instrumentid + " is not in the dict"
 	param =  nameDict[instrumentid]["param"]
 	bt = BandAndTrigger(param)
+	if len(data) <=0:
+		return
 	for row in data[0:-1]:
 		bt.get_md_data(row,0)
 		# tranfer the string to float\
@@ -336,14 +326,17 @@ def main():
 	# data = data1+data2+data3+data4+data5+data6+data7+data8+data9+data10+data11+data12+data13
 	# instrumentid_array = ["ru1801","rb1801","zn1710","pb1710","cu1710","hc1801","i1801","ni1801","al1710","au1712","ag1712","bu1712"]
 	# data13 = [20171030,20171031,20171101,20171102,20171103]
-	data14 = [20171106,20171107,20171108,20171109,20171110]
-	data15 = [20171113,20171114,20171115,20171116,20171117]
-	data16 = [20171120,20171121,20171122,20171123]
-	# data = data1+data2+data3+data4+data5+data6+data7+data8+data9+data10+data11+data12+data13
-	data = data14+data15+data16
-	# instrumentid_array = ["rb1805","ru1801","zn1801","cu1801","al1801","ni1805","pp1801","v1801","au1806","ag1712","pb1801","bu1712"]
+	# data14 = [20171106,20171107,20171108,20171109,20171110]
+	# data15 = [20171113,20171114,20171115,20171116,20171117]
+	# data16 = [20171120,20171121,20171122,20171123]
+	# # data = data1+data2+data3+data4+data5+data6+data7+data8+data9+data10+data11+data12+data13
+	# data = data14+data15+data16
+	data = [20171201,20171204,20171205,20171206,20171207,20171208]
+	# instrumentid_array = ["pp1805"]
 	# instrumentid_array = ["j1801","jm1801","m1801","cs1801","c1801","a1801","i1805","hc1805"]
-	instrumentid_array = ["y1801","p1801"]
+	instrumentid_array1 = ["rb1805","ru1801","zn1802","cu1802","al1802","ni1805","pp1805","v1805","au1806","ag1806","pb1801","bu1806"]
+	instrumentid_array2 = ["j1801","jm1801","m1805","cs1801","c1801","a1801","i1805","hc1805","y1801","p1805"]
+	instrumentid_array = instrumentid_array1 + instrumentid_array2
 
 	for mydate in data:
 		for instrumentid in instrumentid_array:
