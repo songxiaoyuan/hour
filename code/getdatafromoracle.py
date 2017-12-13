@@ -105,15 +105,17 @@ if __name__=='__main__':
 
 	# # # # # data = data1+data2+data3+data4+data5+data6+data7+data8+data9+data10+data11+data12+data13
 	# data = data14+data15+data16
-	data = [20171201]
-	# instrumentid_array = ["pp1805","v1805"]
-	# instrumentid_array = ["m1801","cs1801"]
-	# instrumentid_array = ["j1801","jm1801","m1801","cs1801","c1801","a1801","i1805","hc1805"]
-	# instrumentid_array = ["y1801","p1801","v1801","pp1801","jm1801","j1801","a1801","ni1805"]
-	instrumentid_array = ["rb1805","ru1801","zn1801","cu1801","al1801","ni1805","pp1801","v1801","au1806","ag1712","pb1801","bu1712"]
-	instrumentid_array1 = ["rb1805","ru1801","zn1802","cu1802","al1802","ni1805","pp1805","v1805","au1806","ag1806","pb1801","bu1806"]
-	instrumentid_array2 = ["j1801","jm1801","m1805","cs1801","c1801","a1801","i1805","hc1805","y1801","p1805"]
-	instrumentid_array = instrumentid_array1 + instrumentid_array2
+	# data = [20171201]
+	# # instrumentid_array = ["pp1805","v1805"]
+	# # instrumentid_array = ["m1801","cs1801"]
+	# # instrumentid_array = ["j1801","jm1801","m1801","cs1801","c1801","a1801","i1805","hc1805"]
+	# # instrumentid_array = ["y1801","p1801","v1801","pp1801","jm1801","j1801","a1801","ni1805"]
+	# instrumentid_array = ["rb1805","ru1801","zn1801","cu1801","al1801","ni1805","pp1801","v1801","au1806","ag1712","pb1801","bu1712"]
+	# instrumentid_array1 = ["rb1805","ru1801","zn1802","cu1802","al1802","ni1805","pp1805","v1805","au1806","ag1806","pb1801","bu1806"]
+	# instrumentid_array2 = ["j1801","jm1801","m1805","cs1801","c1801","a1801","i1805","hc1805","y1801","p1805"]
+	# instrumentid_array = instrumentid_array1 + instrumentid_array2
+	data = [20171201,20171204,20171205,20171206,20171207,20171208,20171211,20171212]
+	instrumentid_array = ["rb1805"]
 	for myday in data:
 		for instrumentid in instrumentid_array:
 			getSqlData(myday,instrumentid)

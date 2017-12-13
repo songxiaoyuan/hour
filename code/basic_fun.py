@@ -200,8 +200,8 @@ def get_ma_data(lastprice,price_array,period):
 		if i >= (l - period +1):
 			tmpsum +=price_array[i]
 	tmpsum +=lastprice
-	if period >= len(price_array):
-		ret = float(tmpsum)/len(price_array)
+	if period > len(price_array):
+		ret = float(tmpsum)/(len(price_array)+1)
 	else:
 		ret=float(tmpsum)/period
 	# print time + "," + str(ret)
@@ -330,22 +330,27 @@ def get_weighted_mean(target_array,weight_array,period):
 		return 0
 	return float(total_sum)/weight_sum
 
-def write_config_info(pre_ema_val_60,pre_ema_val_5,pre_ema_val_1,lastprice_array,ema_period,config_path):
+def write_config_info(pre_ema_val_60,pre_ema_val_5,lastprice_array,lastprice_array_hour,ema_period,config_path):
 	config_file = open(config_path,"w")
 	line1 = "pre_ema_val_60:,"+str(pre_ema_val_60)
 	line2 = "pre_ema_val_5:,"+str(pre_ema_val_5)
-	line3 = "pre_ema_val_1:,"+str(pre_ema_val_1)
-	line4 = "lastprice_array:"
+	line4 = "lastprice_array_hour:"
 	left = len(lastprice_array)-ema_period
 	if left<0:
 		left = 0
 	for i in xrange(left,len(lastprice_array)):
 		line4 = line4 + "," + str(lastprice_array[i])
-	write_lines = [line1+'\n',line2+'\n',line3+'\n',line4]
+	line5 = "lastprice_array_5minute:"
+	left = len(lastprice_array_hour)-ema_period
+	if left<0:
+		left = 0
+	for i in xrange(left,len(lastprice_array_hour)):
+		line5 = line5 + "," + str(lastprice_array_hour[i])
+	write_lines = [line1+'\n',line2+'\n',line4+'\n',line5]
 	config_file.writelines(write_lines)
 	config_file.close()
 
-def get_config_info(pre_ema_val_array_60,pre_ema_val_array_5,pre_ema_val_array_1,lastprice_array,config_path):
+def get_config_info(pre_ema_val_array_60,pre_ema_val_array_5,lastprice_array,lastprice_array_hour,config_path):
 	try:
 		config_file = open(config_path)
 	except Exception as e:
@@ -362,16 +367,19 @@ def get_config_info(pre_ema_val_array_60,pre_ema_val_array_5,pre_ema_val_array_1
 			print "this is pre_ema_val_5"
 			line = line.split(',')
 			pre_ema_val_array_5.append(float(line[1].strip()))
-		elif "pre_ema_val_1" in line:
-			print "this is pre_ema_val_1"
-			line = line.split(',')
-			pre_ema_val_array_1.append(float(line[1].strip()))
-		elif "lastprice_array" in line:
+		elif "lastprice_array_hour" in line:
 			print "this is lastprice_array"
 			line = line.split(',')[1:]
 			for tmp in line:
 				tmp = float(tmp.strip())
 				lastprice_array.append(tmp)
+			# print "the length of lastprice is: " + str(len(lastprice_array))
+		elif "lastprice_array_5minute" in line:
+			print "this is lastprice_array_5minute"
+			line = line.split(',')[1:]
+			for tmp in line:
+				tmp = float(tmp.strip())
+				lastprice_array_hour.append(tmp)
 			# print "the length of lastprice is: " + str(len(lastprice_array))
 		else:
 			print "this is not the config line"

@@ -112,6 +112,7 @@ class BandAndTrigger(object):
 		self._pre_md_price = []
 		self._now_md_price = []
 		self._lastprice_array = []
+		self._lastprice_array_5minute = []
 
 
 		self._pre_ema_val_60 = 0
@@ -128,8 +129,10 @@ class BandAndTrigger(object):
 		self._limit_ema_tick_1 = param_dic["limit_ema_tick_1"]
 
 		self._ma_period = 20
-		self._minute_num = 0
-		self._limit_minute_num = 61
+		self._minute_num_hour = 0
+		self._minute_num_5minute = 0
+		self._limit_minute_num_hour = 60
+		self._limit_minute_num_5minute = 5
 		self._current_minute = -1
 
 		self._multiple = param_dic["multiple"]
@@ -146,15 +149,13 @@ class BandAndTrigger(object):
 			tmp_pre_ema_array_5 = []
 			tmp_pre_ema_array_1 = []
 			config_file = "../hour_config/config/"+str(self._config_file)
-			bf.get_config_info(tmp_pre_ema_array_60,tmp_pre_ema_array_5,tmp_pre_ema_array_1,self._lastprice_array,config_file)
+			bf.get_config_info(tmp_pre_ema_array_60,tmp_pre_ema_array_5,self._lastprice_array,self._lastprice_array_5minute,config_file)
 			if len(tmp_pre_ema_array_60)==0:
 				self._pre_ema_val_60 = 0
 				self._pre_ema_val_5 = 0
-				self._pre_ema_val_1 = 0
 			else:
 				self._pre_ema_val_60 = tmp_pre_ema_array_60[0]
 				self._pre_ema_val_5 = tmp_pre_ema_array_5[0]
-				self._pre_ema_val_1 = tmp_pre_ema_array_1[0]
 		# print self._pre_ema_val_60
 		print len(self._lastprice_array)
 		# print "the length of lastprice is: " +str(len(self._lastprice_array))
@@ -162,12 +163,12 @@ class BandAndTrigger(object):
 	def create_config_file(self):
 
 		config_file = "../hour_config/config/"+str(self._config_file)
-		bf.write_config_info(self._now_middle_60,self._now_middle_5,self._pre_ema_val_1,
-			self._lastprice_array,self._ma_period,config_file)
+		bf.write_config_info(self._now_middle_60,self._now_middle_5,
+			self._lastprice_array,self._lastprice_array_5minute,self._ma_period,config_file)
 
 		config_file = "../hour_config/config/"+str(self._config_file+1)
-		bf.write_config_info(self._now_middle_60,self._now_middle_5,self._pre_ema_val_1,
-			self._lastprice_array,self._ma_period,config_file)
+		bf.write_config_info(self._now_middle_60,self._now_middle_5,
+			self._lastprice_array,self._lastprice_array_5minute,self._ma_period,config_file)
 
 
 		# config_file = "../hour_config/config/"+str(self._config_file+4)
@@ -205,8 +206,7 @@ class BandAndTrigger(object):
 			self._pre_ema_val_5 = lastprice
 			self._pre_ema_val_1 = lastprice
 		self._now_middle_60 = bf.get_ma_data(lastprice,self._lastprice_array,self._ma_period)
-		self._now_middle_5 = bf.get_ema_data(lastprice,self._pre_ema_val_5,self._ma_period)
-		self._now_middle_1 = bf.get_ema_data(lastprice,self._pre_ema_val_1,self._ma_period)
+		self._now_middle_5 =bf.get_ma_data(lastprice,self._lastprice_array_5minute,self._ma_period)
 		
 		self._sd_val = bf.get_sd_data(lastprice,self._lastprice_array,self._ma_period)
 		self._rsi_val = bf.get_rsi_data(lastprice,self._lastprice_array,self._rsi_period)
@@ -214,40 +214,23 @@ class BandAndTrigger(object):
 		if lastone == True:
 			self._pre_ema_val_60 = self._now_middle_60
 			self._lastprice_array.append(lastprice)
+			self._lastprice_array_5minute.append(lastprice)
 			return True
 		minute = int(self._now_md_price[TIME].split(':')[1])
 		if minute != self._current_minute:
 			self._current_minute = minute
-			self._minute_num +=1
-			if self._minute_num >= self._limit_minute_num:
-				self._minute_num =0
-				self._pre_ema_val_60 = self._now_middle_60
+			self._minute_num_hour +=1
+			self._minute_num_5minute +=1
+			if self._minute_num_hour > self._limit_minute_num_hour:
+				self._minute_num_hour =0
 				self._lastprice_array.append(lastprice)
-		if self._now_ema_tick_1 >= self._limit_ema_tick_1:
-			self._now_ema_tick_1 = 0
-			self._pre_ema_val_1 = self._now_middle_1
-		else:
-			self._now_ema_tick_1 +=1
-		if self._now_ema_tick_5 >= self._limit_ema_tick_5:
-			self._now_ema_tick_5 = 0
-			self._pre_ema_val_5 = self._now_middle_5
-		else:
-			self._now_ema_tick_5 +=1
-
-		diff_volume = self._now_md_price[VOLUME] - self._pre_md_price[VOLUME]
-		diff_interest = self._now_md_price[OPENINTEREST] - self._pre_md_price[OPENINTEREST]
-		diff_turnover = self._now_md_price[TURNONER] - self._pre_md_price[TURNONER]
-
-		if diff_volume != 0 and (self._pre_md_price[ASKPRICE1] - self._pre_md_price[BIDPRICE1]) !=0:
-			avg_price = float(diff_turnover)/diff_volume/self._multiple
-			spread = 100*(avg_price - self._pre_md_price[BIDPRICE1])/(self._pre_md_price[ASKPRICE1] - self._pre_md_price[BIDPRICE1])
-		else:
-			spread = 50
+			if self._minute_num_5minute > self._limit_minute_num_5minute:
+				self._minute_num_5minute =0
+				self._lastprice_array_5minute.append(lastprice)
 
 
 		tmp_to_csv = [self._now_md_price[TIME],self._now_md_price[LASTPRICE],
-					round(self._now_middle_60,2),round(self._now_middle_5,2),round(self._now_middle_1,2),round(self._sd_val,2),
-					round(self._rsi_val,2),round(diff_volume,2),round(spread,2)]
+					round(self._now_middle_60,2),round(self._now_middle_5,2)]
 		# print tmp_to_csv
 		self._write_to_csv_data.append(tmp_to_csv)
 
@@ -379,7 +362,7 @@ def copy_file_to_save():
 	copy_file_one_to_one("../hour_config/config/",new_path+'/')
 
 def main():
-	# instrumentid_array = ["pb1801","bu1712"]
+	# instrumentid_array = ["rb1805"]
 	instrumentid_array1 = ["rb1805","hc1805","zn1802","cu1802","al1802","ni1805","pp1805","v1805","au1806","ag1806","pb1801","bu1806"]
 	instrumentid_array2 = ["j1801","jm1801","ru1801","i1805"]
 	instrumentid_array3 =  ["m1805","cs1801","c1801","a1801","y1801","p1805"]
