@@ -133,6 +133,15 @@
             tmpobj.data = []
             band_series_data.push(tmpobj)
 
+
+            band_legend_data.push('1minute')
+            band_legend_nums.push(0)
+            tmpobj = {}
+            tmpobj.name = "1minute"
+            tmpobj.type = "line"
+            tmpobj.data = []
+            band_series_data.push(tmpobj)
+
         }
 
 
@@ -147,7 +156,8 @@
                 var time = linedata[0]
                 var lastprice = Number(linedata[1])
                 var middle = Number(linedata[2])
-                var minute = Number(linedata[3])
+                var minute5 = Number(linedata[3])
+                var minute1 = Number(linedata[4])
 
 
                 if (lastprice==NaN) {
@@ -174,7 +184,8 @@
 
                 band_series_data[0].data.push(lastprice)
                 band_series_data[1].data.push(middle)
-                band_series_data[2].data.push(minute)
+                band_series_data[2].data.push(minute5)
+                 band_series_data[3].data.push(minute1)
 
 
 

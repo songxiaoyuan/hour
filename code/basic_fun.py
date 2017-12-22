@@ -330,7 +330,7 @@ def get_weighted_mean(target_array,weight_array,period):
 		return 0
 	return float(total_sum)/weight_sum
 
-def write_config_info(pre_ema_val_60,pre_ema_val_5,lastprice_array,lastprice_array_hour,ema_period,config_path):
+def write_config_info(pre_ema_val_60,pre_ema_val_5,lastprice_array,lastprice_array_5minute,lastprice_array_1minute,ema_period,config_path):
 	config_file = open(config_path,"w")
 	line1 = "pre_ema_val_60:,"+str(pre_ema_val_60)
 	line2 = "pre_ema_val_5:,"+str(pre_ema_val_5)
@@ -341,12 +341,18 @@ def write_config_info(pre_ema_val_60,pre_ema_val_5,lastprice_array,lastprice_arr
 	for i in xrange(left,len(lastprice_array)):
 		line4 = line4 + "," + str(lastprice_array[i])
 	line5 = "lastprice_array_5minute:"
-	left = len(lastprice_array_hour)-ema_period
+	left = len(lastprice_array_5minute)-ema_period
 	if left<0:
 		left = 0
-	for i in xrange(left,len(lastprice_array_hour)):
-		line5 = line5 + "," + str(lastprice_array_hour[i])
-	write_lines = [line1+'\n',line2+'\n',line4+'\n',line5]
+	for i in xrange(left,len(lastprice_array_5minute)):
+		line5 = line5 + "," + str(lastprice_array_5minute[i])
+	line6 = "lastprice_array_1minute:"
+	left = len(lastprice_array_1minute)-ema_period
+	if left<0:
+		left = 0
+	for i in xrange(left,len(lastprice_array_1minute)):
+		line6 = line6 + "," + str(lastprice_array_1minute[i])
+	write_lines = [line1+'\n',line2+'\n',line4+'\n',line5+'\n',line6]
 	config_file.writelines(write_lines)
 	config_file.close()
 
@@ -368,7 +374,7 @@ def get_config_info(pre_ema_val_array_60,pre_ema_val_array_5,lastprice_array,las
 			line = line.split(',')
 			pre_ema_val_array_5.append(float(line[1].strip()))
 		elif "lastprice_array_hour" in line:
-			print "this is lastprice_array"
+			print "this is lastprice_array_hour"
 			line = line.split(',')[1:]
 			for tmp in line:
 				tmp = float(tmp.strip())

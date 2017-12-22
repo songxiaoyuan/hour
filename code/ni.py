@@ -44,6 +44,10 @@ def main():
 	shutil.copy('../hour_config/config/370', '../hour_config/real_server/536')
 	shutil.copy('../hour_config/config/370', '../hour_config/real_server/537')
 	shutil.copy('../hour_config/config/370', '../hour_config/config/371')
+	shutil.copy('../hour_config/config/370', '../hour_config/config/372')
+	shutil.copy('../hour_config/config/370', '../hour_config/config/373')
+	shutil.copy('../hour_config/config/370', '../hour_config/config/374')
+	shutil.copy('../hour_config/config/370', '../hour_config/config/375')
 
 	# zn
 	shutil.copy('../hour_config/config/340', '../hour_config/real_server/528')

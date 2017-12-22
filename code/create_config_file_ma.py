@@ -99,7 +99,7 @@ nameDict = {
 	"a1801":{"param":param_dict_a},
 	"m1805":{"param":param_dict_m},
 	"cs1801":{"param":param_dict_cs},
-	"pb1801":{"param":param_dict_pb}
+	"pb1802":{"param":param_dict_pb}
 }
 
 class BandAndTrigger(object):
@@ -113,6 +113,7 @@ class BandAndTrigger(object):
 		self._now_md_price = []
 		self._lastprice_array = []
 		self._lastprice_array_5minute = []
+		self._lastprice_array_1minute = []
 
 
 		self._pre_ema_val_60 = 0
@@ -131,8 +132,10 @@ class BandAndTrigger(object):
 		self._ma_period = 20
 		self._minute_num_hour = 0
 		self._minute_num_5minute = 0
+		self._minute_num_1minute = 0
 		self._limit_minute_num_hour = 60
 		self._limit_minute_num_5minute = 5
+		self._limit_minute_num_1minute = 1
 		self._current_minute = -1
 
 		self._multiple = param_dic["multiple"]
@@ -164,20 +167,28 @@ class BandAndTrigger(object):
 
 		config_file = "../hour_config/config/"+str(self._config_file)
 		bf.write_config_info(self._now_middle_60,self._now_middle_5,
-			self._lastprice_array,self._lastprice_array_5minute,self._ma_period,config_file)
+			self._lastprice_array,self._lastprice_array_5minute,self._lastprice_array_1minute,self._ma_period,config_file)
 
 		config_file = "../hour_config/config/"+str(self._config_file+1)
 		bf.write_config_info(self._now_middle_60,self._now_middle_5,
-			self._lastprice_array,self._lastprice_array_5minute,self._ma_period,config_file)
+			self._lastprice_array,self._lastprice_array_5minute,self._lastprice_array_1minute,self._ma_period,config_file)
 
+		config_file = "../hour_config/config/"+str(self._config_file+2)
+		bf.write_config_info(self._now_middle_60,self._now_middle_5,
+			self._lastprice_array,self._lastprice_array_5minute,self._lastprice_array_1minute,self._ma_period,config_file)
 
-		# config_file = "../hour_config/config/"+str(self._config_file+4)
-		# bf.write_config_info(self._pre_ema_val_60,self._pre_ema_val_5,self._pre_ema_val_1,
-		# 	self._lastprice_array,self._ma_period,config_file)
+		config_file = "../hour_config/config/"+str(self._config_file+3)
+		bf.write_config_info(self._now_middle_60,self._now_middle_5,
+			self._lastprice_array,self._lastprice_array_5minute,self._lastprice_array_1minute,self._ma_period,config_file)
 
-		# config_file = "../hour_config/config/"+str(self._config_file+5)
-		# bf.write_config_info(self._pre_ema_val_60,self._pre_ema_val_5,self._pre_ema_val_1,
-		# 	self._lastprice_array,self._ma_period,config_file)
+		config_file = "../hour_config/config/"+str(self._config_file+4)
+		bf.write_config_info(self._now_middle_60,self._now_middle_5,
+			self._lastprice_array,self._lastprice_array_5minute,self._lastprice_array_1minute,self._ma_period,config_file)
+
+		config_file = "../hour_config/config/"+str(self._config_file+5)
+		bf.write_config_info(self._now_middle_60,self._now_middle_5,
+			self._lastprice_array,self._lastprice_array_5minute,self._lastprice_array_1minute,self._ma_period,config_file)
+
 		print "has write the config file"
 
 
@@ -207,30 +218,33 @@ class BandAndTrigger(object):
 			self._pre_ema_val_1 = lastprice
 		self._now_middle_60 = bf.get_ma_data(lastprice,self._lastprice_array,self._ma_period)
 		self._now_middle_5 =bf.get_ma_data(lastprice,self._lastprice_array_5minute,self._ma_period)
+		self._now_middle_1 =bf.get_ma_data(lastprice,self._lastprice_array_1minute,self._ma_period)
 		
 		self._sd_val = bf.get_sd_data(lastprice,self._lastprice_array,self._ma_period)
 		self._rsi_val = bf.get_rsi_data(lastprice,self._lastprice_array,self._rsi_period)
 
-		if lastone == True:
+		if lastone == True and self._minute_num_hour > 30:
 			self._pre_ema_val_60 = self._now_middle_60
 			self._lastprice_array.append(lastprice)
 			self._lastprice_array_5minute.append(lastprice)
+			self._lastprice_array_1minute.append(lastprice)
 			return True
 		minute = int(self._now_md_price[TIME].split(':')[1])
 		if minute != self._current_minute:
 			self._current_minute = minute
 			self._minute_num_hour +=1
 			self._minute_num_5minute +=1
+			self._lastprice_array_1minute.append(lastprice)
 			if self._minute_num_hour > self._limit_minute_num_hour:
-				self._minute_num_hour =0
+				self._minute_num_hour =1
 				self._lastprice_array.append(lastprice)
-			if self._minute_num_5minute > self._limit_minute_num_5minute:
-				self._minute_num_5minute =0
+			if self._minute_num_5minute >= self._limit_minute_num_5minute:
+				self._minute_num_5minute =1
 				self._lastprice_array_5minute.append(lastprice)
 
 
 		tmp_to_csv = [self._now_md_price[TIME],self._now_md_price[LASTPRICE],
-					round(self._now_middle_60,2),round(self._now_middle_5,2)]
+					round(self._now_middle_60,2),round(self._now_middle_5,2),round(self._now_middle_1,2)]
 		# print tmp_to_csv
 		self._write_to_csv_data.append(tmp_to_csv)
 
@@ -363,7 +377,7 @@ def copy_file_to_save():
 
 def main():
 	# instrumentid_array = ["rb1805"]
-	instrumentid_array1 = ["rb1805","hc1805","zn1802","cu1802","al1802","ni1805","pp1805","v1805","au1806","ag1806","pb1801","bu1806"]
+	instrumentid_array1 = ["rb1805","hc1805","zn1802","cu1802","al1802","ni1805","pp1805","v1805","au1806","ag1806","pb1802","bu1806"]
 	instrumentid_array2 = ["j1801","jm1801","ru1801","i1805"]
 	instrumentid_array3 =  ["m1805","cs1801","c1801","a1801","y1801","p1805"]
 	instrumentid_array = instrumentid_array1 + instrumentid_array2
