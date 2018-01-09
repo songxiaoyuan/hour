@@ -78,11 +78,11 @@ param_dict_cs = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 
 nameDict = {
 	"rb1805":{"param":param_dict_rb},
-	"ru1801":{"param":param_dic_ru},
-	"zn1802":{"param":param_dic_zn},
-	"cu1802":{"param":param_dict_cu},
+	"ru1805":{"param":param_dic_ru},
+	"zn1803":{"param":param_dic_zn},
+	"cu1803":{"param":param_dict_cu},
 	"ni1805":{"param":param_dic_ni},
-	"al1802":{"param":param_dic_al},
+	"al1803":{"param":param_dic_al},
 	"pp1805":{"param":param_dict_pp},
 	"v1805":{"param":param_dict_v},
 	"au1806":{"param":param_dict_au},
@@ -219,7 +219,7 @@ class BandAndTrigger(object):
 		self._sd_val = bf.get_sd_data(lastprice,self._lastprice_array,self._ma_period)
 		self._rsi_val = bf.get_rsi_data(lastprice,self._lastprice_array,self._rsi_period)
 
-		if lastone == True:
+		if lastone == True and self._minute_num_hour > 30:
 			self._pre_ema_val_60 = self._now_middle_60
 			self._lastprice_array.append(lastprice)
 			self._lastprice_array_5minute.append(lastprice)
@@ -351,8 +351,8 @@ def main():
 	# instrumentid_array2 = ["j1801","jm1801","ru1801","i1805"]
 	# instrumentid_array3 =  ["m1805","cs1801","c1801","a1801","y1801","p1805"]
 	# instrumentid_array = instrumentid_array1 + instrumentid_array2
-	instrumentid_array = ["rb1805"]
-	data = [20171207,20171208,20171211,20171212,20171213,20171214,20171215,20171218,20171219]
+	instrumentid_array = ["cu1803","zn1803","al1803"]
+	data = [20171227,20171228,20171229,20180102,20180103,20180104,20180105,20180108]
 
 	for mydate in data:
 		for instrumentid in instrumentid_array:

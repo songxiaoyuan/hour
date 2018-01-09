@@ -79,11 +79,11 @@ param_dict_cs = {"rsi_period":14,"limit_ema_tick_5":60,"limit_ema_tick_1":120,
 
 nameDict = {
 	"rb1805":{"param":param_dict_rb},
-	"ru1801":{"param":param_dic_ru},
-	"zn1802":{"param":param_dic_zn},
-	"cu1802":{"param":param_dict_cu},
+	"ru1805":{"param":param_dic_ru},
+	"zn1803":{"param":param_dic_zn},
+	"cu1803":{"param":param_dict_cu},
 	"ni1805":{"param":param_dic_ni},
-	"al1802":{"param":param_dic_al},
+	"al1803":{"param":param_dic_al},
 	"pp1805":{"param":param_dict_pp},
 	"v1805":{"param":param_dict_v},
 	"au1806":{"param":param_dict_au},
@@ -377,13 +377,14 @@ def copy_file_to_save():
 
 def main():
 	# instrumentid_array = ["rb1805"]
-	instrumentid_array1 = ["rb1805","hc1805","zn1802","cu1802","al1802","ni1805","pp1805","v1805","au1806","ag1806","pb1802","bu1806"]
-	instrumentid_array2 = ["j1801","jm1801","ru1801","i1805"]
+	instrumentid_array1 = ["rb1805","hc1805","zn1803","cu1803","al1803","ni1805","pp1805","v1805","au1806","ag1806","pb1802","bu1806"]
+	instrumentid_array2 = ["j1801","jm1801","ru1805","i1805"]
 	instrumentid_array3 =  ["m1805","cs1801","c1801","a1801","y1801","p1805"]
 	instrumentid_array = instrumentid_array1 + instrumentid_array2
 
 	conn = cx_Oracle.connect('hq','hq','114.251.16.210:9921/quota')    
-	# conn = cx_Oracle.connect('hyqh','hyqh','192.168.1.15:1521/asp')    
+	# conn = cx_Oracle.connect('hyqh','hyqh','192.168.1.15:1521/asp')  
+	  
 
 	cursor = conn.cursor()
 
